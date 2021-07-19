@@ -1,7 +1,7 @@
 * PURE: 1
 * Title: PURE Purpose and Guidelines
 * Version: 1
-* Last-Modified: 09-July-2021
+* Last-Modified: 19-July-2021
 * Author: Marina Moore
 * Status: Active
 * Content-Type: text/markdown
@@ -9,7 +9,7 @@
 
 # What is a PURE?
 
-PURE stands for Proposed Uptane Revision and Enhancement and is largely modeled after a similar type of document used by The Update Framework (TUF)'s TUF Augmentation Proposal (TAP) process.  A PURE is a design document that describes a new feature for Uptane or for its processes or environment.  The PURE should provide both a concise technical specification of the feature and a rationale for the feature's inclusion.
+PURE stands for Proposed Uptane Revision and Enhancement and offers a formal method for members of the community to propose the addition or modification of the Uptane specification. Both the method and the document format is largely modeled on the TUF Augmentation Proposal (TAP) used by The Update Framework (TUF). A PURE is a design document that describes a new feature for Uptane or for its processes or environment. Every PURE should provide both a concise technical specification of the feature and a rationale for the feature's inclusion.
 
 We intend PUREs to be the primary mechanisms for proposing major new features, for collecting community input on an issue, and for documenting the design decisions that have gone into Uptane.  The PURE author is responsible for building consensus within the community and documenting dissenting opinions.
 
@@ -17,13 +17,13 @@ Because the PUREs are maintained as text files in a versioned repository, their 
 
 # PURE Status
 
-The status of a PURE indicates its progress through the development process. The different status classifications are defined below. Unless otherwise specified, each status applies to both kinds of PURE.
+The status of a PURE indicates its progress through the development process. The different status classifications are defined below.
 
 * A **Draft** PURE is one that has been proposed and is actively being worked on.
 * An **Accepted** PURE is deemed ready to be integrated into the Uptane Standard.
-* **Deferred** PUREs are potentially good ideas which are not being actively developed, or where progress is not being made.
-* A **Rejected** PURE is one which the Uptane Steering Committee have decided is ultimately not a good idea.
-* **Withdrawn** PUREs are submissions which the champion, or lead author, of the PURE has decided are no longer worth pursuing.
+* **Deferred** PUREs are potentially good ideas that are not being actively developed at this moment, or where progress is not being made.
+* A **Rejected** PURE is one which the Uptane Steering Committee has decided is not ultimately a good idea.
+* **Withdrawn** PUREs are submissions removed from consideration because their champions, or lead authors, have decided they are no longer worth pursuing.
 * **Final** PUREs are complete and will no longer change. This means the proposed changes have been merged into the Uptane Standard.
 * A **Superseded** PURE is one which has been rendered obsolete by a newer PURE.
 
@@ -40,13 +40,13 @@ The PURE process begins with a new idea for Uptane.  It is highly recommended th
 
 The more focused the PURE, the more successful it tends to be.  The Steering Committee reserves the right to reject PUREs if they appear too unfocused or too broad.  If in doubt, split your PURE into several well-focused ones.
 
-Each PURE MUST have a champion -- someone who writes the PURE using the style and format described below, shepherds the discussions in the appropriate forums, and attempts to build community consensus around the idea.  The PURE champion (a.k.a. Author) SHOULD first attempt to ascertain whether the idea is PURE-able. Posting to the Uptane [issue tracker](https://github.com/uptane/uptane-standard/issues)  or the [Uptane mailing list](https://groups.google.com/g/uptane-standards) are good ways to go about this.
+Each PURE MUST have a champion -- someone who writes the PURE using the style and format described below, shepherds the discussions in the appropriate forums, and attempts to build community consensus around the idea.  The PURE champion (a.k.a. Author) SHOULD first attempt to ascertain whether the idea is feasible and beneficial to the Standard. Posting to the Uptane [issue tracker](https://github.com/uptane/uptane-standard/issues)  or the [Uptane mailing list](https://groups.google.com/g/uptane-standards) are good ways to go about this.
 
 ## Submitting a PURE
 
 Once the champion has asked the Uptane community whether an idea has any chance of acceptance, a draft PURE SHALL be presented as a [pull request](https://github.com/uptane/pures/pulls) to the PUREs repository.  The draft MUST be written in  the style described below, or it will immediately fail review.
 
-Once a submission is approved for inclusion in the PURE repository, the repository maintainers will assign it a number, mark its status as "Draft", and merge the initial draft.  The maintainers will not unreasonably deny Draft status to a PURE.  Reasons for denying a PURE at this stage include duplication of effort, being technically unsound, not providing proper motivation or addressing backwards compatibility, or not in keeping with the Uptane philosophy.  Members of the Uptane community may be consulted during the approval phase, with the Steering Committee as the final arbiter of the  draft's viability as a PURE.
+Once a submission is approved for inclusion in the PURE repository, the repository maintainers will assign it a number, mark its status as "Draft", and merge the initial draft.  The maintainers will not unreasonably deny Draft status to a PURE.  Reasons for denying a PURE at this stage include a fundamentally unsound technology base, duplication of effort, weak or insufficient motivation, backwards compatibility issues, or a submission that is simply not in keeping with the Uptane philosophy.  Members of the Uptane community may be consulted during the approval phase, with the Steering Committee as the final arbiter of the  draft's viability as a PURE.
 
 As updates are necessary, the PURE author can submit new versions by opening additional [pull requests](https://github.com/uptane/pures/pulls) against the repository.
 
@@ -78,7 +78,7 @@ Each PURE SHOULD have the following parts:
 
 2. *Abstract* -- a short (~200 word) description of the technical issue being addressed.
 
-3. *Motivation* -- The motivation is critical for PUREs that want to change Uptane. It should clearly explain why the existing standard is inadequate to address the problem that the PURE solves. It should further describe what motivated the design of the PURE and what particular design decisions were made. It should describe any alternative designs that were considered and how the feature is supported in other frameworks. PURE submissions without sufficient motivation may be rejected outright.
+3. *Motivation* -- Any proposal seeking to change Uptane requires a strong and compelling motivation. It should clearly explain why the existing standard is inadequate to address the problem that the PURE solves. It should further describe what motivated the design of the PURE and what particular design decisions were made. It should describe any alternative designs that were considered and how the feature is supported in other frameworks. PURE submissions without sufficient motivation may be rejected outright.
 
 4. *Specification* -- The technical specification should describe the syntax and semantics of any new feature.  The specification should be detailed enough to allow competing, interoperable implementations for existing Uptane implementors.
 
