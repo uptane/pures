@@ -2,7 +2,7 @@
 
 ## Accepted
 
-* [PURE 1: Title: PURE Purpose and Guidelines](tap1.md)
+* [PURE 1: Title: PURE Purpose and Guidelines](pure1.md)
 
 ## Draft
 
