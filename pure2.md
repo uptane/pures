@@ -229,7 +229,7 @@ Note that, although the Offline-update Snapshot metadata file lists two possible
 
 #### metadata/director/EMEA-standard.json
 
-This sample Offline-update Targets metadata file would direct a device to install firmware-acme-1.0.2.bin on the acme-flibberator-NBB2 ECU, and firmware-bravo-3.1.1.bin on the bravo-turboencabulator ECU, regardless of the specific ECU serial number of those devices. That installation directions is only valid until 2022-02-24T20:54:38Z, and furthermore is only valid if version 5 of Offline-update-EMEA.json is the version that the device's latest Offline-update-snapshot.json file indicates.
+This sample Offline-update Targets metadata file would direct a device to install firmware-acme-1.0.2.bin on the acme-flibberator-NBB2 ECU, and firmware-bravo-3.1.1.bin on the bravo-turboencabulator ECU, regardless of the specific ECU serial number of those devices. That installation directions is only valid until 2022-02-24T20:54:38Z, and furthermore is only valid if version 5 of EMEA-standard.json is the version that the device's latest Offline-update-snapshot.json file indicates.
 
 ```
 {
@@ -296,7 +296,7 @@ This sample Offline-update Targets metadata file would direct a device to instal
 
 #### metadata/director/Offline-update-snapshot.json
 
-This sample Offline-update Snapshot metadata file indicates to the device that the latest version of Offline-update-EMEA.json is 5, and the latest version of Offline-update-APAC.json is 3 (and also indicates the hashes of those files, though this is not required by PURE-2). The device SHALL reject any other version of either of those files. It also SHALL reject any offline updates after 2021-11-21T15:38:10Z. Note that this doesn't mean that Offline-update-EMEA.json version 5 and Offline-update-APAC.json version 3 stop being valid on that date: if the device already has valid Offline-update Snapshot metadata with a higher version number than this (which might have been received from an OTA update or from another offline update), it can still use the versions of Offline-update-EMEA.json and Offline-update-APAC.json on this USB stick if the newer Offline-update-snapshot.json indicates those are still the latest versions of those files.
+This sample Offline-update Snapshot metadata file indicates to the device that the latest version of EMEA-standard.json is 5, and the latest version of EMEA-premium.json is 3 (and also indicates the hashes of those files, though this is not required by PURE-2). 
 
 ```
 {
@@ -337,6 +337,8 @@ This sample Offline-update Snapshot metadata file indicates to the device that t
     }
 }
 ```
+
+The device will reject any version of either of those files not listed in the Snapshot. It will also reject any offline updates after 2021-11-21T15:38:10Z. But note that this doesn't mean that EMEA-standard.json version 5 and EMEA-premium.json version 3 stop being valid on that date. For example, suppose the device already has a valid version 21 of the Offline-update Snapshot metadata, instead of 18 as in the example (which might have been received from an OTA update or from another offline update). Version 21 indicates that the latest version of EMEA-standard.json is still 5, but the latest version of EMEA-premium.json is now 4. An offline update containing version 5 of EMEA-standard.json will still be valid, even if it has an outdated Offline-update Snapshot metadata file.
 
 #### metadata/director/5.root.json
 
