@@ -108,7 +108,7 @@ The primary still SHALL verify all target images listed in the Director Offline-
 
 The Primary SHALL download metadata for all Offline-update targets and perform a full verification on it. Full verification of metadata means that the ECU checks that the Targets metadata about images from the Director repository matches the Targets metadata about the same images from the Image repository. This provides resilience to a key compromise in the system.
 
-Because of the nature of offline updates, sometimes the Offline-update image will contain newer metadata than the primary, and sometimes the converse will be true. Most of the changed or added steps in the verification process were made to deal with this reality; the rest of the differences are steps that were removed because they are no longer applicable, in particular those relating to the ECU version reports and vehicle version manifest.
+Because of the nature of offline updates, sometimes the Offline-update bundle (i.e. the files in the well-known location) will contain newer metadata than the primary, and sometimes the converse will be true. Most of the changed or added steps in the verification process were made to deal with this reality; the rest of the differences are steps that were removed because they are no longer applicable, in particular those relating to the ECU version reports and vehicle version manifest.
 
 In order to perform Offline-update verification, an ECU SHALL perform the following steps.
 
@@ -507,7 +507,7 @@ Like all Uptane metadata, Offline-update metadata can be revoked both implicitly
 
 ### Validation and updating of metadata
 
-An Offline-update image also includes metadata for other Uptane roles:
+An Offline-update bundle (i.e. all files included in the well-known location) also includes metadata for other Uptane roles:
 
 * The root role from both Director and Image
 * The snapshot role from Image
