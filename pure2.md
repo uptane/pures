@@ -7,7 +7,7 @@
 * Content-Type: <text/markdown>
 * Created: 2021-09-16
 
-# PURE-2: Offline Updates (Draft)
+# PURE-2: Offline Updates
 
 ## Abstract
 
