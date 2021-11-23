@@ -3,7 +3,7 @@
 * Version: 1
 * Last-Modified: 2021-09-16
 * Authors: Jon Oster <jon.oster@toradex.com>, Phil Wise <phil@phil-wise.com>
-* Status: Draft
+* Status: Approved
 * Content-Type: <text/markdown>
 * Created: 2021-09-16
 
