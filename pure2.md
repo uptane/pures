@@ -475,9 +475,9 @@ It is possible for a partial-verification ECU to perform PURE-2 offline updates.
 
 ### Metadata expiry times
 
-The Offline Updates role signs two different types of metadata: Offline-update Targets metadata files, which contain the targets to be installed, and the the Offline-update Snapshot metadata, which lists the currently-valid Offline-update Targets metadata files. For an offline update to be installed, both the offline update Snapshot metadata file and the Targets metadata file being installed MUST be within their validity period.
+For an offline update to be installed, both the Offline-update Snapshot metadata file and the Offline-update Targets metadata file being being processed MUST be within their validity period.
 
-Therefore, choosing the expiry times for these files is an important security consideration, and an important usability consideration. Making the right choice will depend heavily on the implementation and what purpose offline updates are serving. For example, if offline updates are designed for 
+Therefore, choosing the expiry times for these files is an important security consideration, and an important usability consideration. Making the right choice will depend heavily on the implementation and what purpose offline updates are serving. For example, if offline updates are designed to be used by professional technicians who can be expected to frequently download updated images, expiry times could safely be quite short--say, every 2 weeks for the Offline-update Snapshot metadata. If the offline updates need to be more durable, for example if they're to be directly distributed to end users on storage media, and you can't count on users updating promptly, you might choose to have significantly longer expiry times--perhaps up to a year or more.
 
 ## Security Analysis
 
