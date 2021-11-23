@@ -519,7 +519,7 @@ During an offline update, the device will only accept the metadata being offered
 * The latest valid Offline-update Snapshot metadata file the device possesses has not expired
 * The file is signed by the threshold of unique keys listed in the latest Director root metadata the device possesses for the Offline-update Targets role
 * The file is listed in the latest Offline-update Snapshot metadata file the device possesses, and matches the version number listed in that Snapshot metadata
-* All targets that appear in the file are also present in the latest version of Image repo Targets metadata the device possesses
+* All targets that appear in the file are also present in the latest version of Image repository Targets metadata the device possesses
 
 As a consequence, an individual Offline-update Targets metadata file will be accepted until it's invalidated by one of the following methods:
 
@@ -527,7 +527,7 @@ As a consequence, an individual Offline-update Targets metadata file will be acc
 * Director's Offline-update Snapshot metadata expires
 * A new version of Offline-update Snapshot metadata is issued with the file removed or bumped to a later version, AND that new version reaches the device by some means (either online or offline update)
 * The Offline-update targets signing keys are changed in Director root metadata AND the new metadata reaches the device by some means (either online or offline update)
-* An individual target listed in the file is removed from the Image repo Targets metadata AND the new metadata reaches the device by some means (either online or offline update)
+* An individual target listed in the file is removed from the Image repository Targets metadata AND the new metadata reaches the device by some means (either online or offline update)
 
 
 ## Backwards Compatibility
