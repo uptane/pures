@@ -136,13 +136,13 @@ In order to perform Offline-update verification, an ECU SHALL perform the follow
 
     4.  Check that there is at most one target in the metadata that can be installed on this ECU. The exact method for this will vary between implementations. For example, if each target specified a hardwareId, make sure that there is only one target listed for this ECU's hardwareId. If there is more than one target that could be installed on this ECU, abort the update cycle and log the failure (if this is the primary ECU) or report the failure to the primary ECU (if this is a secondary ECU).
 
-5.  If the Offline-update Targets metadata indicates that there is no new target for this ECU (either because there is no target valid for install on this ECU, or because the target is already installed), the verification process MAY be stopped here and considered complete. Otherwise, continue with the rest of the steps.
+5.  If the Offline-update Targets metadata indicates that there is no new target for this ECU (either because there is no target valid for installation on this ECU, or because the target is already installed), the verification process MAY be stopped here and considered complete. Otherwise, continue with the rest of the steps.
 
 6.  Check if updated Image repository root metadata is available in the well-known location, following the procedure listed in Section 5.4.4.3 of the Standard, loading the root metadata file(s) from the well-known location instead of attempting to download them from the repository.
 
 7.  Check if updated Image repository Snapshot metadata is available in the well-known location:
 
-    1.  Load the Image repository Snapshot metadata file from the well-known location. If the version number of the existing Image repository Snapshot metadata file is equal to or greater than the one found in the well-known location, continue to step 8.
+    1.  Load the Image repository Snapshot metadata file from the well-known location. If the version number of the existing Image repository Snapshot metadata file the ECU has stored is equal to or greater than the one found in the well-known location, continue to step 8.
 
     2.  Otherwise, check that it has been signed by the threshold of keys specified in the latest Root metadata file. If the new Snapshot metadata file is not signed as required, discard it, abort the update cycle, and log the signature failure. (Checks for an arbitrary software attack.)
 
@@ -152,7 +152,7 @@ In order to perform Offline-update verification, an ECU SHALL perform the follow
 
 8.  Check if updated Image repository Targets metadata is available in the well-known location. For each Targets metadata file listed in the Image repository Snapshot metadata:
 
-    1.  Load the Targets metadata file. If a version of this Targets metadata file already exists on the device, check if the version number of the existing file is equal to or greater than the one found in the well-known location. If it is, continue to the next listed Targets metadata file. (Or to step 9 if this is the last metadata file listed.)
+    1.  Load the Targets metadata file. If a version of this Targets metadata file already exists on the device, check if the version number of the existing file the ECU has stored is equal to or greater than the one found in the well-known location. If it is, continue to the next listed Targets metadata file. (Or to step 9 if this is the last metadata file listed.)
 
     2.  Check that the version number of this Targets metadata file matches the version number listed in the latest Snapshot metadata. If the version number does not match, discard it, abort the update cycle, and log the failure.
 
