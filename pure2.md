@@ -54,7 +54,7 @@ When a device receives online updates from the Director, it receives the latest 
 
 ### Offline-update role in root metadata
 
-To perform offline updates, the root metadata file in the Director repository SHALL include a new "Offline-updates" role. This role MAY use the same signing key as the Targets role, but SHOULD use its own. The Offline-update role's key(s) MAY be kept online or offline, depending on the security requirements of the implementor.
+To perform offline updates, the root metadata file in the Director repository SHALL include two new "Offline-updates" roles: one responsible for Offline-update Snapshot metadata, and one responsible for offline-update Targets metadata. These roles MAY use the same signing key as the Targets role, but SHOULD use their own. The Offline-update role's key(s) MAY be kept online or offline, depending on the security requirements of the implementor.
 
 ### Offline-update Snapshot metadata
 
