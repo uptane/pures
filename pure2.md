@@ -50,7 +50,7 @@ To solve the problems above, we add a new role to the Director repository, calle
 
 Each Offline-update Targets metadata file lists a set of images eligible for installation together as an offline update. This metadata is designed to be loaded onto a portable storage medium, such as a USB drive or a diagnostics/flashing tool with attached storage, alongside an up-to-date version of all non-device-specific metadata from both Uptane repositories and binaries for all targets listed. Uptane clients can check for the presence of Offline-update metadata, either by an automated process (e.g. periodically checking some well-known location on a filesystem or TFTP server) or via a manually-triggered diagnostic command. If Offline-update metadata is found, the clients validate it, check it against the Image repository metadata, and then install the targets.
 
-When a devices receives online updates from the Director receive the latest version of the Offline-update Snapshot metadata as part of the normal update cycle.
+When a device receives online updates from the Director, it receives the latest version of the Offline-update Snapshot metadata as part of the normal update cycle.
 
 ### Offline-update role in root metadata
 
