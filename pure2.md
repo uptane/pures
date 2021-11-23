@@ -11,7 +11,7 @@
 
 ## Abstract
 
-Firmware often needs to be updated offline, in situations where the full Uptane interactive flow is not possible for some reason--usually because internet connectivity is not available, or the device to be updated has not yet registered ECU keys with the Uptane backend. In those scenarios, it is still desirable to have some degree of validation and protection of the update process, and in particular it is desirable to ensure that these offline updates can be directed.
+Firmware often needs to be updated offline, in situations where the full Uptane interactive flow is not possible for some reason--usually because internet connectivity is not available, or the device to be updated has not yet registered ECU keys with the Uptane backend. In those scenarios, it is still desirable to have some degree of validation and protection of the update process, and in particular to ensure that these offline updates can be directed.
 
 This PURE offers a method of creating a bundle of firmware images and metadata that can be put on durable storage and used to install updates in the absence of connectivity with the update server, but without turning that bundle into a permanent vector for rollback attacks. To accomplish this, we define a new role on the Director repository for signing targets metadata for offline installation, along with the procedures for verifying this metadata.
 
