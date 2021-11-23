@@ -13,7 +13,7 @@
 
 Firmware often needs to be updated offline, in situations where the full Uptane interactive flow is not possible for some reason--usually because internet connectivity is not available, or the device to be updated has not yet registered ECU keys with the Uptane backend. In those scenarios, it is still desirable to have some degree of validation and protection of the update process, and in particular to ensure that these offline updates can be directed.
 
-This PURE offers a method of creating a bundle of firmware images and metadata that can be put on durable storage and used to install updates in the absence of connectivity with the update server, but without turning that bundle into a permanent vector for rollback attacks. To accomplish this, we define a new role on the Director repository for signing targets metadata for offline installation, along with the procedures for verifying this metadata.
+This PURE offers a method of creating a bundle of firmware images and metadata that can be put on durable storage and used to install updates in the absence of connectivity with the update server, but without turning that bundle into a permanent vector for rollback attacks. To accomplish this, we define a new role on the Director repository for signing Targets metadata for offline installation, along with the procedures for verifying this metadata.
 
 
 ## Motivation
@@ -46,9 +46,9 @@ There are a number of potential scenarios where an OEM may wish to validate and 
 
 ### The offline-update metadata role 
 
-To solve the problems above, we add a new role to the Director repository, called the "offline-update" role. The new offline-update role is responsible for producing and signing metadata about sets of images that are valid for offline updates. This includes two types of metadata: offline-update snapshot metadata and offline-update targets metadata. These roles are analagous to snapshot and targets metadata on the image repository.
+To solve the problems above, we add a new role to the Director repository, called the "offline-update" role. The new offline-update role is responsible for producing and signing metadata about sets of images that are valid for offline updates. This includes two types of metadata: offline-update snapshot metadata and offline-update Targets metadata. These roles are analagous to snapshot and Targets metadata on the image repository.
 
-Each offline-update targets metadata file lists a set of images eligible for installation together as an offline update. This metadata is designed to be loaded onto a portable storage medium, such as a USB drive or a diagnostics/flashing tool with attached storage, alongside an up-to-date version of all non-device-specific metadata from both Uptane repositories and binaries for all targets listed. Uptane clients can check for the presence of offline-update metadata, either by an automated process (e.g. periodically checking some well-known location on a filesystem or TFTP server) or via a manually-triggered diagnostic command. If offline-update metadata is found, the clients validate it, check it against the Image repository metadata, and then install the targets.
+Each offline-update Targets metadata file lists a set of images eligible for installation together as an offline update. This metadata is designed to be loaded onto a portable storage medium, such as a USB drive or a diagnostics/flashing tool with attached storage, alongside an up-to-date version of all non-device-specific metadata from both Uptane repositories and binaries for all targets listed. Uptane clients can check for the presence of offline-update metadata, either by an automated process (e.g. periodically checking some well-known location on a filesystem or TFTP server) or via a manually-triggered diagnostic command. If offline-update metadata is found, the clients validate it, check it against the Image repository metadata, and then install the targets.
 
 When a devices receives online updates from the Director receive the latest version of the offline-update snapshot metadata as part of the normal update cycle.
 
@@ -58,21 +58,21 @@ To perform offline updates, the root metadata file in the Director repository SH
 
 ### Offline-update snapshot metadata
 
-The offline-update snapshot metadata lists version numbers and filenames of all offline-update targets metadata files.
+The offline-update snapshot metadata lists version numbers and filenames of all offline-update Targets metadata files.
 
-For each offline-update targets metadata file on the repository, the offline-update snapshot metadata SHALL contain the following information:
+For each offline-update Targets metadata file on the repository, the offline-update snapshot metadata SHALL contain the following information:
 
-1.  The filename and version number of the offline-update targets metadata file.
+1.  The filename and version number of the offline-update Targets metadata file.
 
-### Offline-update targets metadata
+### Offline-update Targets metadata
 
-Each offline-update targets metadata file on a repository contains information about a set of images eligible to be installed on devices. Like other Director targets metadata files, offline-update targets metadata files SHALL NOT contain delegations.
+Each offline-update Targets metadata file on a repository contains information about a set of images eligible to be installed on devices. Like other Director Targets metadata files, offline-update Targets metadata files SHALL NOT contain delegations.
 
-When a device is validating offline-update targets metadata, it will only execute an update if it can unambiguously determine which images to install. For this reason, the metadata SHOULD include a mechanism to permit disambiguation in multi-ECU systems. See the deployment considerations section for more detail on this recommendation.
+When a device is validating offline-update Targets metadata, it will only execute an update if it can unambiguously determine which images to install. For this reason, the metadata SHOULD include a mechanism to permit disambiguation in multi-ECU systems. See the deployment considerations section for more detail on this recommendation.
 
 ### Addendum to Director repository snapshot metadata requirements
 
-Offline-update targets metadata files SHOULD NOT be listed in the main snapshots metadata file of the Director repository, if implemented. Because the offline-update role signs its own snapshot metadata, listing those files in the main snapshots metadata file is redundant, and increases the size of a file that is downloaded very frequently.
+Offline-update Targets metadata files SHOULD NOT be listed in the main snapshots metadata file of the Director repository, if implemented. Because the offline-update role signs its own snapshot metadata, listing those files in the main snapshots metadata file is redundant, and increases the size of a file that is downloaded very frequently.
 
 ### Required files for offline updates
 
@@ -92,9 +92,9 @@ The following elements SHALL be present on any offline-update storage location (
 
     -   The offline-update Snapshot metadata file
 
-    -   Exactly one offline-update targets metadata file
+    -   Exactly one offline-update Targets metadata file
 
--   All target images referenced in the offline-update targets metadata file
+-   All target images referenced in the offline-update Targets metadata file
 
 ### Metadata verification procedures
 
@@ -126,7 +126,7 @@ In order to perform offline-update verification, an ECU SHALL perform the follow
 
     4.  Check that the current (or latest securely attested) time is lower than the expiration timestamp in this Snapshot metadata file. If the new Snapshot metadata file is expired, discard it, abort the update cycle, and log the potential freeze attack. (Checks for a freeze attack.)
 
-4.  Traverse the list of offline-update targets metadata files in the offline-update Snapshot metadata until a matching filename is found in the well-known location. If no matching file is found, abort the update cycle and log the error. If one is found, perform the following verification procedure:
+4.  Traverse the list of offline-update Targets metadata files in the offline-update Snapshot metadata until a matching filename is found in the well-known location. If no matching file is found, abort the update cycle and log the error. If one is found, perform the following verification procedure:
 
     1.  Check that the version number of this Targets metadata file matches the version number listed in the latest Snapshot metadata. If the version number does not match, discard it, abort the update cycle, and log the failure.
 
@@ -150,9 +150,9 @@ In order to perform offline-update verification, an ECU SHALL perform the follow
 
     4.  It is not necessary to check whether the Snapshot metadata file from the Image repository is expired. Image repository snapshot metadata often has shorter expiry times than is desirable for offline updates, so this safeguard against freeze attacks SHOULD be skipped in most cases.
 
-8.  Check if updated Image repository Targets metadata is available in the well-known location. For each targets metadata file listed in the Image repository Snapshot metadata:
+8.  Check if updated Image repository Targets metadata is available in the well-known location. For each Targets metadata file listed in the Image repository Snapshot metadata:
 
-    1.  Load the targets metadata file. If a version of this targets metadata file already exists on the device, check if the version number of the existing file is equal to or greater than the one found in the well-known location. If it is, continue to the next listed Targets metadata file. (Or to step 9 if this is the last metadata file listed.)
+    1.  Load the Targets metadata file. If a version of this Targets metadata file already exists on the device, check if the version number of the existing file is equal to or greater than the one found in the well-known location. If it is, continue to the next listed Targets metadata file. (Or to step 9 if this is the last metadata file listed.)
 
     2.  Check that the version number of this Targets metadata file matches the version number listed in the latest Snapshot metadata. If the version number does not match, discard it, abort the update cycle, and log the failure.
 
@@ -195,7 +195,7 @@ The ECU does not require an ECU key in order to be capable of receiving PURE-2-s
 
 ### Sample directory structure
 
-Note that, although the offline-update snapshot metadata file lists two possible offline updates (EMEA-standard.json and EMEA-premium.json, see sample metadata below), a single source of offline-update metadata SHOULD always only include one of them--otherwise, the device wouldn't know which one to install. An implementor MAY choose to allow multiple offline-update targets metadata files in the same location, however: for example, if the Uptane client on the primary has the capability to display different options and allow the technician or end-user to select the one they wish to install.
+Note that, although the offline-update snapshot metadata file lists two possible offline updates (EMEA-standard.json and EMEA-premium.json, see sample metadata below), a single source of offline-update metadata SHOULD always only include one of them--otherwise, the device wouldn't know which one to install. An implementor MAY choose to allow multiple offline-update Targets metadata files in the same location, however: for example, if the Uptane client on the primary has the capability to display different options and allow the technician or end-user to select the one they wish to install.
 
 ```
 .well-known
@@ -227,7 +227,7 @@ These three examples are given because they're the only files that are unique to
 
 #### metadata/director/EMEA-standard.json
 
-This sample offline-update targets metadata file would direct a device to install firmware-acme-1.0.2.bin on the acme-flibberator-NBB2 ECU, and firmware-bravo-3.1.1.bin on the bravo-turboencabulator ECU, regardless of the specific ECU serial number of those devices. That installation directions is only valid until 2022-02-24T20:54:38Z, and furthermore is only valid if version 5 of offline-update-EMEA.json is the version that the device's latest offline-update-snapshot.json file indicates.
+This sample offline-update Targets metadata file would direct a device to install firmware-acme-1.0.2.bin on the acme-flibberator-NBB2 ECU, and firmware-bravo-3.1.1.bin on the bravo-turboencabulator ECU, regardless of the specific ECU serial number of those devices. That installation directions is only valid until 2022-02-24T20:54:38Z, and furthermore is only valid if version 5 of offline-update-EMEA.json is the version that the device's latest offline-update-snapshot.json file indicates.
 
 ```
 {
@@ -467,11 +467,11 @@ The prerequisites for PURE-2 updates are similar to the prerequisites for normal
 
 ### Partial-verification ECUs and PURE-2
 
-It is possible for a partial-verification ECU to perform PURE-2 offline updates. Like partial verification for normal Uptane updates, a partial-verification ECU MAY verify only the offline update targets metadata file it receives from the primary.
+It is possible for a partial-verification ECU to perform PURE-2 offline updates. Like partial verification for normal Uptane updates, a partial-verification ECU MAY verify only the offline update Targets metadata file it receives from the primary.
 
 ### Metadata expiry times
 
-The Offline Updates role signs two different types of metadata: offline-update targets metadata files, which contain the targets to be installed, and the the offline-update snapshot metadata, which lists the currently-valid offline-update targets metadata files. For an offline update to be installed, both the offline update snapshot metadata file and the targets metadata file being installed MUST be within their validity period.
+The Offline Updates role signs two different types of metadata: offline-update Targets metadata files, which contain the targets to be installed, and the the offline-update snapshot metadata, which lists the currently-valid offline-update Targets metadata files. For an offline update to be installed, both the offline update snapshot metadata file and the Targets metadata file being installed MUST be within their validity period.
 
 Therefore, choosing the expiry times for these files is an important security consideration, and an important usability consideration. Making the right choice will depend heavily on the implementation and what purpose offline updates are serving. For example, if offline updates are designed for 
 
@@ -509,7 +509,7 @@ An offline-update image also includes metadata for other Uptane roles:
 * The snapshot role from Image
 * All targets roles from Image
 
-During an offline update, the device will only accept the metadata being offered in the offline update if it is newer than the metadata the device already has. Note that this does not imply that an offline update will fail if the device has a newer version of some metadata than the version on offer. For an offline-update targets metadata file to be accepted by the device, the following conditions MUST be met:
+During an offline update, the device will only accept the metadata being offered in the offline update if it is newer than the metadata the device already has. Note that this does not imply that an offline update will fail if the device has a newer version of some metadata than the version on offer. For an offline-update Targets metadata file to be accepted by the device, the following conditions MUST be met:
 
 * The file itself has not expired
 * The latest valid offline-update Snapshot metadata file the device possesses has not expired
@@ -517,7 +517,7 @@ During an offline update, the device will only accept the metadata being offered
 * The file is listed in the latest offline-update Snapshot metadata file the device possesses, and matches the version number listed in that Snapshot metadata
 * All targets that appear in the file are also present in the latest version of Image repo Targets metadata the device possesses
 
-As a consequence, an individual offline-update targets metadata file will be accepted until it's invalidated by one of the following methods:
+As a consequence, an individual offline-update Targets metadata file will be accepted until it's invalidated by one of the following methods:
 
 * It expires
 * Director's offline-update Snapshot metadata expires
