@@ -195,7 +195,6 @@ The ECU does not require an ECU key in order to be capable of receiving PURE-2-s
 
 ### Sample directory structure
 
-Note that, although the Offline-update Snapshot metadata file lists two possible offline updates (EMEA-standard.json and EMEA-premium.json, see sample metadata below), a single source of Offline-update metadata SHOULD always only include one of them--otherwise, the device wouldn't know which one to install. An implementor MAY choose to allow multiple Offline-update Targets metadata files in the same location, however: for example, if the Uptane client on the primary has the capability to display different options and allow the technician or end-user to select the one they wish to install.
 
 ```
 .well-known
@@ -224,6 +223,9 @@ Note that, although the Offline-update Snapshot metadata file lists two possible
 ### Sample metadata files
 
 These three examples are given because they're the only files that are unique to the offline update proposal. All the other metadata files in the directory structure are the same as existing Uptane metadata.
+
+Note that, although the Offline-update Snapshot metadata file lists two possible offline updates (EMEA-standard.json and EMEA-premium.json, see sample metadata below), a single source of Offline-update metadata SHOULD always only include one of them--otherwise, the device wouldn't know which one to install. However, an implementor MAY choose to allow multiple offline-update targets metadata files in the same location. For example, if the Uptane client on the primary has the capability, it could display different options and allow the technician or end-user to select the one they wish to install.
+
 
 #### metadata/director/EMEA-standard.json
 
