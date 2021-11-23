@@ -46,7 +46,7 @@ There are a number of potential scenarios where an OEM may wish to validate and 
 
 ### The Offline-update metadata role 
 
-To solve the problems above, we add a new role to the Director repository, called the "Offline-update" role. The new Offline-update role is responsible for producing and signing metadata about sets of images that are valid for offline updates. This includes two types of metadata: Offline-update Snapshot metadata and Offline-update Targets metadata. These roles are analagous to snapshot and Targets metadata on the image repository.
+To solve the problems above, we add a new role to the Director repository, called the "Offline-update" role. The new Offline-update role is responsible for producing and signing metadata about sets of images that are valid for offline updates. This includes two types of metadata: Offline-update Snapshot metadata and Offline-update Targets metadata. These roles are analagous to snapshot and Targets metadata on the Image repository.
 
 Each Offline-update Targets metadata file lists a set of images eligible for installation together as an offline update. This metadata is designed to be loaded onto a portable storage medium, such as a USB drive or a diagnostics/flashing tool with attached storage, alongside an up-to-date version of all non-device-specific metadata from both Uptane repositories and binaries for all targets listed. Uptane clients can check for the presence of Offline-update metadata, either by an automated process (e.g. periodically checking some well-known location on a filesystem or TFTP server) or via a manually-triggered diagnostic command. If Offline-update metadata is found, the clients validate it, check it against the Image repository metadata, and then install the targets.
 
@@ -98,7 +98,7 @@ The following elements SHALL be present on any Offline-update storage location (
 
 ### Metadata verification procedures
 
-The procedures for verifying Offline-update metadata are similar to the procedures for verifying normal director metadata. However, there are some key differences. The procedures for sending images from the primary to secondaries, as well as for verifying and installing the images once the metadata has been verified, remain the same.
+The procedures for verifying Offline-update metadata are similar to the procedures for verifying normal Director metadata. However, there are some key differences. The procedures for sending images from the primary to secondaries, as well as for verifying and installing the images once the metadata has been verified, remain the same.
 
 Note: wherever the "Uptane Standard" or "the Standard" is referenced, it refers to version 1.2.0 of the Standard, available at https://uptane.github.io/uptane-standard/1.2.0/uptane-standard.html.
 
