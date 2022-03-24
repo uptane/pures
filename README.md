@@ -1,4 +1,4 @@
-# Proposed Uptane Revisions and Enchancements (PUREs)
+# Proposed Uptane Revisions and Enhancements (PUREs)
 
 ## Accepted
 
