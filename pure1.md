@@ -11,7 +11,7 @@
 
 PURE stands for Proposed Uptane Revision and Enhancement and offers a formal method for members of the community to propose the addition or modification of the Uptane specification. Both the method and the document format is largely modeled on the TUF Augmentation Proposal (TAP) used by The Update Framework (TUF). A PURE is a design document that describes a new feature for Uptane or for its processes or environment. Every PURE should provide both a concise technical specification of the feature and a rationale for the feature's inclusion.
 
-We intend PUREs to be the primary mechanisms for proposing major new features, for collecting community input on an issue, and for documenting the design decisions that have gone into Uptane.  The PURE author is responsible for building consensus within the community and documenting dissenting opinions.
+We intend PUREs to be the primary mechanisms for proposing major new features, for collecting community input on emerging issues in cybersecurity, and for documenting the design decisions that have gone into the Uptane Standard. It is not a vehicle for making minor corrections or small modifications in the Standard. Such small changes should be addressed by opening a pull request on either the Standard or the Deployment Best Practices repository. The PURE author is responsible for building consensus within the community and documenting dissenting opinions.
 
 Because the PUREs are maintained as text files in a versioned repository, their revision history is the historical record of the feature proposal.
 
