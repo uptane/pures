@@ -30,7 +30,7 @@ Please give as much detail as possible for a suspected vulnerability in Uptane i
 * Description of vulnerability
 * Examples (if applicable)
 
-Give us a reasonable time to correct the issue before you disclose the vulnerability. We care deeply about security, but we're an open-source project and our team consists mostly comprised of volunteers.
+Give us a reasonable time to correct the issue before you disclose the vulnerability. We care deeply about security, but we're an open-source project and our team consists mostly of volunteers.
 
 We will acknowledge the contributions of security researchers (if desired)
 
