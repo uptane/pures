@@ -9,7 +9,7 @@
 
 # Abstract
 
-This PURE proposes a formal mechanism for reporting vulnerabilities in the Uptane Standard. It also attempts to set some boundaries as to what the Uptane maintainers can actually do with any given reported vulnerability. While a patch can be prepared, Uptane maintainers are not capable of overseeing the application of such a patch. Therefore, the reporting mechanism proposed here will also specify what those submitting a vulnerability can reasonably expect in the way of a response from Uptane maintainers. 
+This PURE proposes a formal mechanism for reporting vulnerabilities in the Uptane Standard. This includes the establishment of an early disclosure list for which Uptane adopters can voluntarily register to receive notification about detected vulnerabilities and the availability of patches. The PURE also attempts to set some boundaries as to what the Uptane maintainers can reasonably expect to do with any given reported vulnerability since they have only limited capability to oversee the application of such a patch. Therefore, the reporting mechanism proposed here will also specify what those submitting a vulnerability can reasonably expect in the way of a response from Uptane maintainers.
 
 # Motivation
 
@@ -21,6 +21,9 @@ Therefore, the reporting and adoption method suggested below must offer a) an ea
 
 # Specification
 
+## *Establishing an early disclosure mailing list*
+Notices will be posted on Uptane's two mailing lists as well as on the Deployment Best Practices web pages inviting adopters and implementers to voluntarily sign up for our early disclosure mailing list.
+
 ## *Reporting a vulnerability*
 Suspected security vulnerabilities should be reported to `uptane-security [AT] googlegroups [DOT] com. We're committed to working with security researchers to resolve the vulnerabilities they discover. You can help us by following these guidelines:
 
@@ -29,12 +32,15 @@ Please give as much detail as possible for a suspected vulnerability in Uptane i
 * Version in which it was found
 * Description of vulnerability
 * Examples (if applicable)
+* Contact information in case follow-up is needed.
 
 Give us a reasonable time to correct the issue before you disclose the vulnerability. We care deeply about security, but we're an open-source project and our team consists mostly of volunteers.
 
-We will acknowledge the contributions of security researchers (if desired)
+We will acknowledge the contributions of security researchers (if desired).
 
-## *Followup on reported items* 
+## *Response on reported items* 
+Uptane will acknowledge receipt of the reported vulnerability in a timely fashion. The maintainers will share this with a small cross-section of active community members. This small group will assess the security risk, determine what may be needed to address the problem, and create the patch.
+
 
 # Security Analysis
 
