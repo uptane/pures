@@ -22,7 +22,9 @@ Therefore, the reporting and adoption method suggested below must offer a) an ea
 # Specification
 
 ## *Establishing an early disclosure mailing list*
-Notices will be posted on Uptane's two mailing lists as well as on the Deployment Best Practices web pages inviting adopters and implementers to voluntarily sign up for our early disclosure mailing list.
+Notices will be posted on Uptane's two mailing lists as well as on the Deployment Best Practices web pages inviting adopters and implementers to voluntarily sign up for our early disclosure mailing list. The individuals/organizations who sign up for this list will be notified of verified vulnerabilities prior to any public announcement and will be sent patches once they are completed.
+
+The early disclosure mailing list will be used only for the purposes stated above.
 
 ## *Reporting a vulnerability*
 Suspected security vulnerabilities should be reported to `uptane-security [AT] googlegroups [DOT] com. We're committed to working with security researchers to resolve the vulnerabilities they discover. You can help us by following these guidelines:
@@ -38,13 +40,17 @@ Give us a reasonable time to correct the issue before you disclose the vulnerabi
 
 We will acknowledge the contributions of security researchers (if desired).
 
-## *Response on reported items* 
+## *Response to reported items* 
 Uptane will acknowledge receipt of the reported vulnerability in a timely fashion. The maintainers will share this with a small cross-section of active community members. This small group will assess the security risk, determine what may be needed to address the problem, and create the patch.
 
+Upon completion of the patch it will be automatically delivered to those on the early disclosure mailing list.
+
+Once it is determined that the reported vulnerability does pose a serious security issue, Uptane maintainers will issue an appropriate public statement and will make patches accessible through a secure source. 
 
 # Security Analysis
 
 # Backwards Compatibility 
+
 
 # Copyright 
 This document has been placed in the public domain.
