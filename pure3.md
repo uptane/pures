@@ -18,7 +18,7 @@ The need to find solutions quickly is further fueled by rapidly increasing
 regulations and standards, including President Biden’s U.S.Executive Order
 14028.
 
-In this PURE, we propose Scudo, a framework that combines the compromise
+In this PURE we propose Scudo, a framework that combines the compromise
 resilience and secure delivery protection of Uptane and the end-to-end software
 supply chain security guarantees offered by in-toto. It describes how in-toto
 metadata can be integrated into an automotive software supply chain that already
@@ -29,8 +29,8 @@ with no sufficiently capable ECUs.
 ## Motivation
 
 Software supply chain attacks are on the rise with the
-[2022 State of the Software Supply Chain report](https://www.sonatype.com/state-of-the-software-supply-chain/introduction),
-noting a 742% increase over the course of the last three years. But, it was the
+[2022 State of the Software Supply Chain report](https://www.sonatype.com/state-of-the-software-supply-chain/introduction)
+noting a 742% increase over the course of the last three years. But it was the
 [2020 Sunburst attack](https://www.cynet.com/attack-techniques-hands-on/sunburst-backdoor-c2-communication-protocol/)
 that really made both government and corporate CISOs take action. Affecting more
 than 100 companies and nine government agencies, the cause of the attack was
