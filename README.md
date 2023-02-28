@@ -2,8 +2,9 @@
 
 ## Accepted
 
-* [PURE 1: Title: PURE Purpose and Guidelines](pure1.md)
-* [PURE 2: Title: Offline Updates](pure2.md)
+* [PURE 1: PURE Purpose and Guidelines](pure1.md)
+* [PURE 2: Offline Updates](pure2.md)
+* [PURE 3: Scudo: Addressing Software Supply Chain Security in Uptane](pure3.md)
 
 ## Draft
 
