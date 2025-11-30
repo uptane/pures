@@ -243,7 +243,7 @@ This sample Offline-update Targets metadata file would direct a device to instal
     ],
     "signed":
     {
-        "_type": "Offline-Targets",
+        "_type": "Offline-Updates",
         "expires": "2022-02-24T20:54:38Z",
         "targets":
         {
